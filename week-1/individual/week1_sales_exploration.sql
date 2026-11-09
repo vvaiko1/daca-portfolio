@@ -51,8 +51,8 @@ LIMIT 10;
 -- Kommentaar: Top 10 summad langevad ühtlaselt (2170 -> ~1859 EUR),
 -- ükski rida ei ole teistest kahtlaselt palju suurem.
 -- Duplikaadid on näha ka siin: sale_id 2407 ja 8379 esinevad mõlemad
--- kaks korda täpselt samade andmetega. Ilma puhastuseta ei saa isegi
--- "top 10 müüki" usaldada.
+-- kaks korda. Ilma puhastuseta ei saa isegi "top 10 müüki" usaldada.
+-- (Täpsem vaade duplikaatidele: päring 9.)
 
 
 -- 6. Müügid üle 500 EUR
@@ -80,12 +80,39 @@ FROM customers;
 -- oluline Anna Metsale kampaaniate planeerimisel.
 
 
+-- 9. Millised read on duplikaadid?
+-- Sorteerime invoice_id järgi, et sama arve read satuksid kõrvuti
+SELECT sale_id, invoice_id, sale_date, customer_id, total_price
+FROM sales
+ORDER BY invoice_id, sale_id
+LIMIT 30;
+-- Tulemus: duplikaadid on kõrvuti nähtavad juba esimestes ridades:
+--   sale_id 2 (INV-202301-00002) esineb 2 korda
+--   sale_id 3 (INV-202301-00003) esineb 4 korda
+-- Kommentaar: Duplikaadid ei ole ainult paarid - üks müük võib
+-- esineda ka 3-4 korda.
+
+-- Näide: suurim müük top 10-st
+SELECT *
+FROM sales
+WHERE sale_id = 2407;
+-- Tulemus: 2 rida, kuid need EI OLE täpselt identsed:
+-- ühel real on customer_id = 2073, teisel puudub (NULL).
+-- Ka sale_id 3 puhul erineb üks koopia: unit_price 258.46 vs 221.19.
+-- Kommentaar: Osa duplikaate on "peaaegu duplikaadid" - sama müük,
+-- aga mõni väli erineb. Neid ei saa eemaldada lihtsalt identsete
+-- ridade otsimisega; Nädal 2-s tuleb otsustada, milline koopia jätta.
+
+
 -- =====================================================
 -- KOKKUVÕTE TOOMAS KASELE
 -- =====================================================
 -- Sales tabelis on 15 234 rida, kuid ainult 10 118 unikaalset arvet.
 -- See tähendab, et 5 116 rida (33,6%) on duplikaadid ning praegused
--- müügiraportid näitavad tegelikust suuremat käivet.
+-- müügiraportid näitavad tegelikust suuremat käivet. Sama müük võib
+-- esineda 2-4 korda ja koopiad võivad erineda (nt puuduv customer_id
+-- või erinev unit_price), seega puhastus vajab reeglit, milline
+-- koopia on õige.
 -- Lisaks on 305 müüki summaga 0 või vähem, mis vajavad selgitust,
 -- 1 487 müügil (~10%) puudub kliendi ID ning 380 kliendil (~12%)
 -- puudub e-mail.
