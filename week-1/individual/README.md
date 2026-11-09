@@ -26,7 +26,7 @@ IT direktor Toomas Kask avastas, et UrbanStyle'i müügitabelis võib olla tuhan
 
 ## Mis üllatas
 
-Duplikaadid on nähtavad isegi lihtsas "top 10 müüki" päringus – sama müük esineb kaks korda. See näitas, et ilma puhastuseta ei saa usaldada ühtegi müüginumbrit.
+Duplikaadid on nähtavad isegi lihtsas "top 10 müüki" päringus. Lisaks selgus, et sama müük võib esineda 2–4 korda ja koopiad ei ole alati identsed: näiteks ühel koopial puudub `customer_id` või on erinev `unit_price`. Seega ei piisa puhastamisel identsete ridade eemaldamisest – tuleb otsustada, milline koopia on õige.
 
 ## Kuidas käivitada
 
