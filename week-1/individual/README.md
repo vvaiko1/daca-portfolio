@@ -36,6 +36,7 @@ Nädal koosnes kahest osast:
 - **Hinnad 13.53 € kuni 434.08 €** – kõige kallim kategooria on jalanõud, kõige odavam lasteriided.
 - **Hinnad ega kategooriad ei puudu ühelgi tootel** – products on kolmest tabelist kõige puhtam.
 - Kategooria nimi **"jalanõusid"** on ebatavaline kirjapilt.
+- 12 toodet on topelt – sama nimi ja andmed, aga uus ID (1351–1362); koopiatel pole ühtegi müüki → tegelikult 350 unikaalset toodet
 
 ## Mis üllatas
 
