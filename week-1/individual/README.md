@@ -47,7 +47,7 @@ Meeskond **UrbanStyle-ladu** koondas kõigi rollide tulemused ühiseks andmemaas
 - [Meeskonna ühine väljund](https://docs.google.com/presentation/d/1cDonL61pHiuUrU8fz3REgoIoUOWszs03UYn5mlqV41A/edit?slide=id.p1#slide=id.p1)
 - [Meeskonna repo](https://github.com/vvaiko1/UrbanStyle-ladu)
 
-Meeskonna peamine järeldus: 40% klientidest puudub lojaalsustase ning duplikaate on nii klientide kui ka müügi tabelis. Soovitus Toomasele: eemaldada duplikaadid enne raporteid ning analüüsida veebi- ja poemüüki eraldi.
+Meeskonna peamine järeldus: Meeskonna peamine järeldus: andmed vajavad enne kasutuselevõttu olulist korrastamist – suurim probleem on sisendite ebaühtsus (linnade kirjapildid, kuupäevade vorm) ja duplikaadid. Soovitus Toomasele: teha detailsem andmete korrastamine ja täiendada andmete kogumise protsessi.
 
 ## Mida õppisin
 
