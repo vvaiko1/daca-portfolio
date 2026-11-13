@@ -28,7 +28,7 @@ PostgreSQL (Supabase) · SQL · [Power BI / Python, pandas, Plotly] · GitHub ·
 | Nädal | Projekt | Oskused |
 |-------|---------|---------|
 | 0 | Sissejuhatus ja töökeskkond | GitHub, Supabase, esimene SQL päring |
-| 1 | [Products tabeli uurimine](week-1/individual/) | SELECT, WHERE, ORDER BY, COUNT, DISTINCT |
+| 1 | [UrbanStyle andmete uurimine (sales, products)](week-1/individual/) | SELECT, WHERE, ORDER BY, COUNT, DISTINCT, GROUP BY |
 | 2 | *tulekul* | Duplikaadid, NULL väärtused |
 | 3 | *tulekul* | JOIN-id |
 | 4 | *tulekul* | GROUP BY, HAVING, CTE |
