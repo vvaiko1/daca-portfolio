@@ -61,11 +61,31 @@ WHERE retail_price > 50 AND category = 'naiste_riided'
 ORDER BY retail_price DESC;
 -- Tulemus: 67 toodet 70-st
 
+-- Duplikaattooted: sama nimi, erinev product_id
+SELECT product_name, COUNT(*) AS kordusi,
+       STRING_AGG(product_id::TEXT, ', ') AS idd
+FROM products
+GROUP BY product_name
+HAVING COUNT(*) > 1
+ORDER BY product_name;
+-- Tulemus: 12 toodet esineb 2 korda; koopiad on ID-dega 1351-1362
+-- (kõik muud veerud identsed). product_id ise ei kordu.
+
+-- Kas koopiatega on seotud müüke? (vajab täidetud sales tabelit)
+SELECT product_id, COUNT(*) AS muuke
+FROM sales
+WHERE product_id BETWEEN 1351 AND 1362
+GROUP BY product_id;
+-- Tulemus: 0 rida - koopiaid pole kunagi müüdud,
+-- originaalidel on 32-59 müüki igaühel
+
 
 -- =====================================================
 -- KOKKUVÕTE
 -- =====================================================
--- Products tabelis on 362 toodet ja 9 veergu, mis jagunevad
+-- Products tabelis on 362 rida ja 9 veergu, kuid 12 toodet on
+-- kataloogis kaks korda (koopiad ID-dega 1351-1362, müüke pole),
+-- seega unikaalseid tooteid on 350. Tooted jagunevad
 -- 5 kategooriasse: meeste_riided (82), jalanõusid (73),
 -- naiste_riided (70), laste_riided (70) ja aksessuaarid (67).
 -- Hinnad jäävad vahemikku 13.53 EUR (aksessuaarid) kuni
@@ -75,6 +95,7 @@ ORDER BY retail_price DESC;
 -- Kategooria nimi "jalanõusid" on ebatavaline kirjapilt
 -- (oodatav oleks "jalanõud").
 --
--- Toomasele: tooteandmed on kolmest tabelist kõige puhtamad ja
--- sobivad analüüsiks; suurim probleem on mujal (sales duplikaadid).
+-- Toomasele: tooteandmed on kolmest tabelist kõige puhtamad, kuid
+-- 12 topelt sisestatud toodet tuleks enne analüüsi eemaldada;
+-- suurim probleem on mujal (sales duplikaadid).
 -- =====================================================
