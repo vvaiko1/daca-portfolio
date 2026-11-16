@@ -28,15 +28,14 @@ Nädal koosnes kahest osast:
 - **305 müüki summaga 0 või vähem** – võivad olla tagastused, testkirjed või vead; vajavad Toomase selgitust.
 - **1 487 müügil (~10%) puudub kliendi ID** – neid ei saa siduda kliendiga.
 - **380 kliendil (~12%) puudub e-mail** – neile ei saa saata turunduskirju.
-- **457 kuupäeva vales formaadis** (DD/MM/YYYY) – teisendati impordi käigus.
 
 ## Peamised leiud – products (grupitöö, roll C)
 
 - **362 toodet ja 9 veergu**, mis jagunevad 5 kategooriasse: meeste_riided (82), jalanõusid (73), naiste_riided (70), laste_riided (70) ja aksessuaarid (67).
 - **Hinnad 13.53 € kuni 434.08 €** – kõige kallim kategooria on jalanõud, kõige odavam lasteriided.
-- **Hinnad ega kategooriad ei puudu ühelgi tootel** – products on kolmest tabelist kõige puhtam.
-- Kategooria nimi **"jalanõusid"** on ebatavaline kirjapilt.
-- 12 toodet on topelt – sama nimi ja andmed, aga uus ID (1351–1362); koopiatel pole ühtegi müüki → tegelikult 350 unikaalset toodet
+- **Hinnad ega kategooriad ei puudu ühelgi tootel** – products on kolmest tabelist kõige puhtam, kuid mitte veatu
+- **Kategooria nimi **"jalanõusid"** on ebatavaline kirjapilt.**
+- **12 toodet on topelt – sama nimi ja andmed, aga uus ID (1351–1362); koopiatel pole ühtegi müüki → tegelikult 350 unikaalset toodet**
 
 ## Mis üllatas
 
