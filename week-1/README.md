@@ -17,10 +17,10 @@ Nädal koosnes kahest osast:
 
 | Fail | Sisu |
 |------|------|
-| [week1_import.sql](week1_import.sql) | CSV failide import Supabase'i staging-tabelite kaudu |
-| [week1_sales_exploration.sql](week1_sales_exploration.sql) | Sales tabeli uurimispäringud, tulemused ja kommentaarid |
-| [week1_products_exploration.sql](week1_products_exploration.sql) | Grupitöö: products tabeli uurimispäringud ja kokkuvõte |
-| [week1_products_screenshot.png](week1_products_screenshot.png) | Products päringute tulemused |
+| [week1_import.sql](individual/week1_import.sql) | CSV failide import Supabase'i staging-tabelite kaudu |
+| [week1_sales_exploration.sql](individual/week1_sales_exploration.sql) | Sales tabeli uurimispäringud, tulemused ja kommentaarid |
+| [week1_products_exploration.sql](individual/week1_products_exploration.sql) | Grupitöö: products tabeli uurimispäringud ja kokkuvõte |
+| [week1_products_screenshot.png](individual/week1_products_screenshot.png) | Products päringute tulemused |
 
 ## Peamised leiud – sales
 
@@ -33,9 +33,9 @@ Nädal koosnes kahest osast:
 
 - **362 toodet ja 9 veergu**, mis jagunevad 5 kategooriasse: meeste_riided (82), jalanõusid (73), naiste_riided (70), laste_riided (70) ja aksessuaarid (67).
 - **Hinnad 13.53 € kuni 434.08 €** – kõige kallim kategooria on jalanõud, kõige odavam lasteriided.
-- **Hinnad ega kategooriad ei puudu ühelgi tootel** – products on kolmest tabelist kõige puhtam, kuid mitte veatu
-- **Kategooria nimi **"jalanõusid"** on ebatavaline kirjapilt.**
-- **12 toodet on topelt – sama nimi ja andmed, aga uus ID (1351–1362); koopiatel pole ühtegi müüki → tegelikult 350 unikaalset toodet**
+- **Hinnad ega kategooriad ei puudu ühelgi tootel** – products on kolmest tabelist kõige puhtam, kuid mitte veatu.
+- **Kategooria nimi „jalanõusid“** on ebatavaline kirjapilt (oodatav oleks „jalanõud“).
+- **12 toodet on topelt** – sama nimi ja andmed, aga uus ID (1351–1362); koopiatel pole ühtegi müüki → tegelikult 350 unikaalset toodet.
 
 ## Mis üllatas
 
