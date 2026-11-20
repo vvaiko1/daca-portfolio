@@ -54,7 +54,7 @@ Meeskonna peamine järeldus: müügi- ja kliendiandmed vajavad korrastamist, enn
 
 ## Kuidas käivitada
 
-1. Ava Supabase projektis SQL Editor (eeldab, et `customers` tabel on imporditud – vt [nädal 1](../week-1/individual/)).
+1. Ava Supabase projektis SQL Editor (eeldab, et `customers` tabel on imporditud – vt [nädal 1](../week-1/)).
 2. Käivita [week2_customers_cleaning.sql](individual/week2_customers_cleaning.sql) päringud ükshaaval ülevalt alla.
 3. Kõik `UPDATE` laused muudavad ainult test koopiat `customers_test`; viimane päring kontrollib, et originaal on puutumata (54 vs 12 linna).
 
