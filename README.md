@@ -28,7 +28,7 @@ PostgreSQL (Supabase) · SQL · [Power BI / Python, pandas, Plotly] · GitHub ·
 | Nädal | Projekt | Oskused |
 |-------|---------|---------|
 | 0 | Sissejuhatus ja töökeskkond | GitHub, Supabase, esimene SQL päring |
-| 1 | [UrbanStyle andmete uurimine (sales, products)](week-1/individual/) | SELECT, WHERE, ORDER BY, COUNT, DISTINCT, GROUP BY |
+| 1 | [UrbanStyle andmete uurimine (sales, products)](week-1/) | SELECT, WHERE, ORDER BY, COUNT, DISTINCT, GROUP BY |
 | 2 | [UrbanStyle andmete puhastamine (customers)](week-2/) | GROUP BY + HAVING, IS NULL, COALESCE, TRIM, INITCAP, UPDATE test koopial |
 | 3 | *tulekul* | JOIN-id |
 | 4 | *tulekul* | GROUP BY, HAVING, CTE |
