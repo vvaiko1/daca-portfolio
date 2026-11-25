@@ -141,7 +141,8 @@ Kõik 12 müümata toodet on ID-dega 1351–1362 (nädal 1 duplikaatkoopiad) ja 
 
 ## Meeskonna töö
 
-- [Meeskonna repo](https://github.com/vvaiko1/UrbanStyle-ladu)
+- [Meeskonna ühine slaid](https://docs.google.com/presentation/d/1tIFRLYS09QJf8webDzAYrYFJGvsdCiUlIwstnK6WABY/edit)
+- [Meeskonna nädala 3 README](https://github.com/vvaiko1/UrbanStyle-ladu/tree/main/week-3)
 
 ## AI kasutamine
 
