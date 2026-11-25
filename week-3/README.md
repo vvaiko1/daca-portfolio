@@ -20,6 +20,7 @@ Nädal koosnes kahest osast:
 | Fail | Sisu |
 |------|------|
 | [week3_roll_c_tooted_inventuur.sql](individual/week3_roll_c_tooted_inventuur.sql) | Rolli C päringud koos tulemuste ja inventuuri soovitustega |
+| [week3_roll_c_screenshot.png](individual/week3_roll_c_screenshot.png) | Tulemuste ekraanipilt |
 
 ## Peamised leiud – tooted + inventuur (roll C)
 
