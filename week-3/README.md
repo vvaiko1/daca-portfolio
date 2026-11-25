@@ -26,6 +26,8 @@ Nädal koosnes kahest osast:
 - **12 toodet pole kunagi müüdud – aga need ei ole ebapopulaarsed tooted.** Kõik 12 on nädal 1 leitud duplikaatkirjed (ID 1351–1362): sama toode on kataloogis kaks korda ja kõik müügid viitavad originaalile. Neil puudub ka laoseis.
 - **Kinni olevat raha müümata toodetes ei ole** – müümata toodet laos ei leidu (edasijõudnute päring: 0 rida, kontrollitud).
 - **231 toote-asukoha real on laoseis tellimispunktis või alla selle**, neist **7 on täiesti otsas**.
+- **Laoandmetes on vigu:** 10 real on laoseis **negatiivne** (kuni −46), 40 real ebareaalselt suur (üle 500, kuni 9 985), kuigi tavaline laoseis on poes kuni 150 ja laos kuni ~500.
+- **Kaardi päring näitab laoseisuta tooteid staatusega „OK“** – 12 toodet, millel pole laorida, saavad `NULL <= reorder_point` tõttu vale staatuse.
 - **Bestseller on kataloogi kalleim toode:** Õhuline sünteetiline sporditossud (434,08 €) – 35 müüki, 27 347,04 €.
 - **Kõige edukam kategooria on jalanõud** (774 035 €); lasteriietel on sama palju müüke kui teistel, kuid kõige väiksem müügitulu (305 844 €) madalamate hindade tõttu.
 
@@ -48,23 +50,80 @@ Nädal koosnes kahest osast:
 | Moodne villane nahk sandaalid     | jalanõusid    | sandaalid   | 368.67       |
 | Stiilne orgaaniline pidžaama      | laste_riided  | komplektid  | 106.82       |
 
-**Müük kategooriate kaupa:**
+**TOP 10 toodet kogumüügi järgi** (`products INNER JOIN sales`):
 
-| Kategooria | Kogumüük |
-|---|---|
-| jalanõusid | 774 034,75 € |
-| meeste_riided | 749 798,72 € |
-| naiste_riided | 686 464,24 € |
-| aksessuaarid | 393 035,82 € |
-| laste_riided | 305 844,45 € |
+| product_name                               | category      | subcategory | müüdud_kordi | kogumüük |
+| ------------------------------------------ | ------------- | ----------- | ------------ | -------- |
+| Õhuline sünteetiline sporditossud          | jalanõusid    | tossud      | 35           | 27347.04 |
+| Trendikas goretex oxfordid                 | jalanõusid    | kingad      | 32           | 23376.15 |
+| Praktiline viskoosne jakk                  | naiste_riided | jakid       | 35           | 22188.80 |
+| Praktiline džersii seelik                  | naiste_riided | seelikud    | 37           | 22039.98 |
+| Boheemlaslik puuvillane tuulejope          | naiste_riided | jakid       | 30           | 21309.96 |
+| Õhuline sünteetiline kõrge kontsaga kingad | jalanõusid    | kontsad     | 38           | 21295.56 |
+| Praktiline kangast kõrge kontsaga kingad   | jalanõusid    | kontsad     | 37           | 21118.68 |
+| Luksuslik villane pahkluu saapad           | jalanõusid    | botased     | 28           | 19704.87 |
+| Praktiline merino villane parka            | meeste_riided | jakid       | 30           | 19620.45 |
+| Õhuline linane jakk                        | naiste_riided | jakid       | 41           | 19393.29 |
 
-<!-- TOP 10 TOOTED: kleebi siia Supabase'i "Copy as Markdown" tulemus -->
+**Müük kategooriate kaupa** (`products LEFT JOIN sales`):
+
+| category      | tooteid | müüke | kogumüük  |
+| ------------- | ------- | ----- | --------- |
+| jalanõusid    | 73      | 2031  | 774034.75 |
+| meeste_riided | 82      | 2266  | 749798.72 |
+| naiste_riided | 70      | 2022  | 686464.24 |
+| aksessuaarid  | 67      | 1772  | 393035.82 |
+| laste_riided  | 70      | 2027  | 305844.45 |
+
+**Laoseis – kõige madalamad read** (`products LEFT JOIN inventory`, kokku 1 412 rida; siin esimesed 17):
+
+| product_name                          | category      | location | quantity_available | reorder_point | staatus      |
+| ------------------------------------- | ------------- | -------- | ------------------ | ------------- | ------------ |
+| Õhuline polüester cargo püksid        | meeste_riided | ladu     | -46                | 47            | TELLI JUURDE |
+| Elegantne tweed bleiser               | meeste_riided | tartu    | -42                | 29            | TELLI JUURDE |
+| Õhuline villane sõrmus                | aksessuaarid  | pärnu    | -25                | 34            | TELLI JUURDE |
+| Minimalistlik puuvillane tuunika      | naiste_riided | pärnu    | -24                | 42            | TELLI JUURDE |
+| Vintage džersii tuunika               | naiste_riided | tartu    | -23                | 48            | TELLI JUURDE |
+| Mugav merino villane dressipluus      | naiste_riided | pärnu    | -22                | 43            | TELLI JUURDE |
+| Mugav puuvillane suvekleit            | laste_riided  | tartu    | -22                | 22            | TELLI JUURDE |
+| Elegantne siidine müts                | aksessuaarid  | ladu     | -19                | 50            | TELLI JUURDE |
+| Soe satiinne pluus                    | naiste_riided | pärnu    | -16                | 33            | TELLI JUURDE |
+| Elegantne orgaaniline tuulejope       | laste_riided  | tartu    | -7                 | 15            | TELLI JUURDE |
+| Luksuslik sünteetiline nahk sandaalid | jalanõusid    | tartu    | 0                  | 35            | TELLI JUURDE |
+| Trendikas goretex chelsea botased     | jalanõusid    | pärnu    | 0                  | 13            | TELLI JUURDE |
+| Sportlik džersii ülikond              | meeste_riided | pärnu    | 0                  | 45            | TELLI JUURDE |
+| Soe merino villane topik              | naiste_riided | tallinn  | 0                  | 14            | TELLI JUURDE |
+| Elegantne puuvillane body             | laste_riided  | pärnu    | 0                  | 42            | TELLI JUURDE |
+| Trendikas fliisist tuulejope          | laste_riided  | pärnu    | 0                  | 20            | TELLI JUURDE |
+| Boheemlaslik klaasist kaelakee        | aksessuaarid  | pärnu    | 0                  | 36            | TELLI JUURDE |
+
+Nimekirja **lõpus** on 12 laoseisuta toodet (`location`, `quantity_available` ja `reorder_point` = NULL) staatusega **„OK“** – see on kaardi CASE-lause puudus.
+
+**Tõend, et edasijõudnute päringu 0 rida on õige** (müümata tooted ilma laoseisu filtrita):
+
+| product_id | product_name                      | quantity_available |
+| ---------- | --------------------------------- | ------------------ |
+| 1351       | Vintage nahkne tossud             | null               |
+| 1352       | Moodne villane nahk sandaalid     | null               |
+| 1353       | Minimalistlik kashmiir bleiser    | null               |
+| 1354       | Praktiline trikoo sukkpüksid      | null               |
+| 1355       | Kerge siidine nahkkindad          | null               |
+| 1356       | Elegantne keraamiline rahakott    | null               |
+| 1357       | Stiilne puust müts                | null               |
+| 1358       | Luksuslik keraamiline elastne vöö | null               |
+| 1359       | Moodne keraamiline sall           | null               |
+| 1360       | Stiilne orgaaniline pidžaama      | null               |
+| 1361       | Klassikaline kashmiir pusa        | null               |
+| 1362       | Luksuslik teksane polo särk       | null               |
+
+Kõik 12 müümata toodet on ID-dega 1351–1362 (nädal 1 duplikaatkoopiad) ja neil pole laoseisu – seega pole müümata kaupa laos ega raha kinni.
 
 ## Inventuuri soovitused Annale ja Toomasele
 
 1. **Eemaldada 12 duplikaattoodet kataloogist** – need on andmeviga, mitte müümata kaup; allahindlus ei aitaks.
 2. **Tellida kohe juurde 7 otsas olevat toodet** ja planeerida tellimus ülejäänud 224 tellimispunktis olevale reale.
-3. **Hoida bestsellerite laoseis** – suurim müügitulu tuleb kallitest jalanõudest, seega võib nende otsasaamine maksta kõige rohkem.
+3. **Kontrollida laoandmed üle** – 10 negatiivset ja 40 ebareaalselt suurt laoseisu viitavad sisestusvigadele; enne tellimisotsuseid tuleks need read inventuuriga kinnitada.
+4. **Hoida bestsellerite laoseis** – suurim müügitulu tuleb kallitest jalanõudest, seega võib nende otsasaamine maksta kõige rohkem.
 
 ## Iseseisev töö – olulisemad tulemused
 
